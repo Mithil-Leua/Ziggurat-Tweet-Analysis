@@ -2,7 +2,7 @@
   (:require [ziggurat.init :as ziggurat]
             [ziggurat.middleware.json :as mw]
             [clojure.tools.logging :as log]
-            [damionjunk.nlp.stanford :as nlp]
+            [helloworld.sentiment :as sentiment]
             [helloworld.routes :as rts])
   (:gen-class))
 
@@ -12,12 +12,12 @@
 (defn stop-fn []
   (log/info "end"))
 
-(defn get-sentiment [text]
-  (nlp/sentiment-maps text))
+(defn get-text [map]
+  (get map :text))
 
 (defn main-fn
   [message]
-  (println (get-sentiment (get message :text)))
+  (println (sentiment/sentiment-value (get-text message)))
   :success)
 
 (def handler-fn
