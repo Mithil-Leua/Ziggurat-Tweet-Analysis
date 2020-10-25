@@ -2,8 +2,7 @@
   (:require [ziggurat.init :as ziggurat]
             [ziggurat.middleware.json :as mw]
             [clojure.tools.logging :as log]
-            [helloworld.sentiment :as sentiment]
-            [helloworld.routes :as rts])
+            [helloworld.sentiment :as sentiment])
   (:gen-class))
 
 (defn start-fn []
@@ -17,7 +16,13 @@
 
 (defn main-fn
   [message]
-  (println (sentiment/sentiment-value (get-text message)))
+  (cond
+    (= (sentiment/sentiment-value (get-text message)) 0) (println "very-negative" (get-text message))
+    (= (sentiment/sentiment-value (get-text message)) 1) (println "negative" (get-text message))
+    (= (sentiment/sentiment-value (get-text message)) 2) (println "neutral" (get-text message))
+    (= (sentiment/sentiment-value (get-text message)) 3) (println "positive" (get-text message))
+    (= (sentiment/sentiment-value (get-text message)) 4) (println "very-positive" (get-text message))
+    :else (println "nothing"))
   :success)
 
 (def handler-fn
@@ -25,4 +30,4 @@
       (mw/parse-json :stream-id)))
 
 (defn -main [& args]
-  (ziggurat/main start-fn stop-fn {:stream-id {:handler-fn handler-fn}} rts/routes))
+  (ziggurat/main start-fn stop-fn {:stream-id {:handler-fn handler-fn}}))
