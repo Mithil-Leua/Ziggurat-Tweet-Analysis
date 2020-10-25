@@ -17,12 +17,12 @@
 
 (defn main-fn
   [message]
-  (println (get-sentiment message))
+  (println (get-sentiment (get message :text)))
   :success)
 
 (def handler-fn
   (-> main-fn
-      (mw/parse-json :stream-id false)))
+      (mw/parse-json :stream-id)))
 
 (defn -main [& args]
   (ziggurat/main start-fn stop-fn {:stream-id {:handler-fn handler-fn}} rts/routes))
