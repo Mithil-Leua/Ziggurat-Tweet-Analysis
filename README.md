@@ -3,6 +3,7 @@
 ## Description
 It reads from messages the Kafka topic which the tweet producer pushed to. Then it parses the tweet to get the content of the tweet and does sentimental analysis using Stanford CoreNLP library. 
 Library analyzes a sentence rather than a text, so it aggregates the sentiment for the tweet as a whole and shows the results on console.
+Relevant blog post can be found [here](https://mithil-kumar.medium.com/real-time-twitter-sentiment-analysis-using-ziggurat-3e5c0a4f10b8).
 
 ## Pre requisites
 
