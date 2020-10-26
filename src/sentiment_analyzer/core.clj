@@ -1,8 +1,8 @@
-(ns helloworld.core
+(ns sentiment-analyzer.core
   (:require [ziggurat.init :as ziggurat]
             [ziggurat.middleware.json :as mw]
             [clojure.tools.logging :as log]
-            [helloworld.sentiment :as sentiment])
+            [sentiment-analyzer.sentiment :as sentiment])
   (:gen-class))
 
 (defn start-fn []

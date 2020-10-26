@@ -1,4 +1,4 @@
-(ns helloworld.sentiment
+(ns sentiment-analyzer.sentiment
   (:require [damionjunk.nlp.stanford :as nlp]))
 
 (defn get-sentiment [text]

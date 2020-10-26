@@ -1,32 +1,35 @@
-# helloworld
+# Sentiment Analyzer
 
-FIXME: description
+## Description
+It reads from messages the Kafka topic which the tweet producer pushed to. Then it parses the tweet to get the content of the tweet and does sentimental analysis using Stanford CoreNLP library. 
+Library analyzes a sentence rather than a text, so it aggregates the sentiment for the tweet as a whole and shows the results on console.
 
-## Installation
+## Build Jar
 
-Download from http://example.com/FIXME.
-
-## Usage
-
-FIXME: explanation
-
-    $ java -jar helloworld-0.1.0-standalone.jar [args]
+clone the project, `cd` to project directory and run the command
+```
+lein uberjar
+```
 
 ## Options
 
 FIXME: listing of options this app accepts.
 
-## Examples
+### Run
 
-...
+clone the project and run the project using
+```
+lein run
+```
 
-### Bugs
+OR
 
-...
+If you do not have lein installed in your system, clone the repo and find the standalone jar in `target/uberjar` directory.
+Make java execute the jar as follows.
+```
+java -jar target/uberjar/sentiment-0.1.0-SNAPSHOT-standalone.jar
+```
 
-### Any Other Sections
-### That You Think
-### Might be Useful
 
 ## License
 
