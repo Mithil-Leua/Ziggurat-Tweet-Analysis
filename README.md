@@ -4,6 +4,15 @@
 It reads from messages the Kafka topic which the tweet producer pushed to. Then it parses the tweet to get the content of the tweet and does sentimental analysis using Stanford CoreNLP library. 
 Library analyzes a sentence rather than a text, so it aggregates the sentiment for the tweet as a whole and shows the results on console.
 
+## Pre requisites
+
+You need to run the docker first. 
+```
+docker-compose up
+```
+To produce tweets to the topic configured in `resources/config.edn` file, run the program over [here](https://github.com/Mithil-Leua/Tweet-Producer).
+Make sure the topic in the Kafka topic and broker match for this project and [this](https://github.com/Mithil-Leua/Tweet-Producer) project.
+
 ## Build Jar
 
 clone the project, `cd` to project directory and run the command
@@ -11,13 +20,10 @@ clone the project, `cd` to project directory and run the command
 lein uberjar
 ```
 
-## Options
-
-FIXME: listing of options this app accepts.
-
 ### Run
 
-clone the project and run the project using
+Configure your Kafka topic, Kafka broker in `resources/config.edn` file. Read more [here](https://github.com/gojek/ziggurat#configuration).
+clone the project and run the project using:
 ```
 lein run
 ```
